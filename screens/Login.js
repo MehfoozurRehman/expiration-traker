@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, TextInput, TouchableOpacity, SafeAreaView } from "react-native";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  SafeAreaView,
+  Image,
+} from "react-native";
 import { black, primary, white } from "../constants/colors";
 
 export default function Login({ navigation }) {
@@ -13,6 +19,10 @@ export default function Login({ navigation }) {
         padding: 20,
       }}
     >
+      <Image
+        source={require("../assets/icon.png")}
+        style={{ width: 100, height: 100, marginBottom: 30 }}
+      />
       <Text
         style={{
           color: black,
