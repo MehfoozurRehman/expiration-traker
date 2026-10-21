@@ -1,54 +1,47 @@
-# Expiration Tracker: Product & Food Shelf-Life Reminder Mobile App
+# Expiration Tracker
 
-A cross-platform React Native and Expo (SDK 45) mobile application for tracking household pantry expiration dates, perishable medicine shelf-life, and expiry notification reminders.
+A React Native and Expo starting point for a mobile app that will track expiry dates for household food and products.
 
-## Overview
+**Status:** Stub. The project has four real source files, and the two screens are a static layout with placeholder content. The login button only navigates to the home screen, and no expiry data is stored or shown.
 
-`expiration-traker` prevents food waste and tracks home inventory:
-- **Pantry Inventory Logging**: Category-sorted perishable goods, batch dates, and shelf-life indicators.
-- **Native Navigation**: React Navigation v6 Native Stack for smooth item browsing and creation.
+## The problem
 
-## Tech Stack
+The app is meant to help people keep track of when items in their home expire, so less food is thrown away. The code does not yet do this. The screens are a layout for a login step and a list of items, both with placeholder data.
 
-- **Framework**: React Native (v0.83) & Expo (SDK 45)
-- **Navigation**: React Navigation v6 (Native Stack)
-- **Frontend Core**: React 17, JavaScript
+## What it does
 
-## Prerequisites
+- **Navigation shell** (`App.js`): a native stack with a `Login` screen followed by a `Home` screen. The default headers are turned off so each screen draws its own layout.
+- **Login screen** (`screens/Login.js`): a logo, a "Get Started" heading, a phone number field and a Login button. The field is not connected to any state, and the button only navigates to `Home`. Nothing is checked or stored.
+- **Home list** (`screens/Home.js`): a scrollable list of twenty identical item cards, each showing a stock image, the title "Products" and the text "Expiry Date". The card data is hard-coded.
+- **Shared palette** (`constants/colors.js`): three colours (a coral primary, white and near-black) used across both screens.
 
-- Node.js (v16 or v18 recommended)
-- Package manager (`pnpm` or `npm`)
-- Expo Go mobile app or mobile simulator
+## How it's built
 
-## Getting Started
+- React Native with Expo (`expo` ~45.0.8, `expo start` for the development server), built with `babel-preset-expo`.
+- React Navigation 6 with the native stack navigator (`@react-navigation/native`, `@react-navigation/native-stack`).
+- Styling is inline `style` objects with values taken from `constants/colors.js`. There is no style system or theme layer yet.
+- `react-native-web` is included, so the same screens can run in a browser.
 
-1. **Install dependencies**:
-   ```bash
-   pnpm install
-   # or
-   npm install
-   ```
+## Running it locally
 
-2. **Run the Development Server**:
-   ```bash
-   pnpm start
-   # or
-   npm start
-   ```
+The `package.json` scripts are:
 
-3. **Launch on Device / Simulator**:
-   - Press `a` for **Android Emulator**.
-   - Press `i` for **iOS Simulator**.
-   - Press `w` for **Web**.
-   - Scan the QR code using the **Expo Go** mobile app.
+```
+pnpm install      # or: npm install
+npm start         # expo start
+npm run android   # expo start --android
+npm run ios       # expo start --ios
+npm run web       # expo start --web
+```
 
-## Available Scripts
+Use the Expo Go app to scan the QR code shown by `npm start`, or open an emulator or simulator.
 
-- `npm start` - Starts the Expo development server.
-- `npm run android` - Runs on Android device/emulator.
-- `npm run ios` - Runs on iOS simulator.
-- `npm run web` - Runs in the web browser.
+## What's left
 
-## Author
-
-Created by [Mehfooz-ur-Rehman](https://github.com/MehfoozurRehman).
+- No expiry data model, no add-item form and no storage. The item list is a fixed set of placeholders.
+- The login screen does not read the phone number field and does not authenticate anyone.
+- No notifications or reminders are implemented.
+- The dependency versions look mismatched. `expo` is pinned to ~45.0.8, which targets React Native 0.68, but `react-native` is pinned to 0.83.1, and `react` is 17.0.2. These need reconciling before the app can run reliably.
+- `ProductCard` takes an empty destructured parameter and renders the same text for every card.
+- No tests.
+- The previous README described category sorting, shelf-life indicators and reminders. The code does not contain any of these, so they have been removed from this guide.
