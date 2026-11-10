@@ -12,4 +12,6 @@ web-build/
 
 # macOS
 .DS_Store
-config.bat
+
+.env*
+!.env.example
